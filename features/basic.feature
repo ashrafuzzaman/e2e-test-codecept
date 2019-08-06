@@ -5,3 +5,4 @@ Feature: Login to CMP
 
   Scenario: login
     Given I am loged in as "admin@newscred.com" with password "qwe90qwe"
+    Then Switch organization to "Multi-Org Parent"

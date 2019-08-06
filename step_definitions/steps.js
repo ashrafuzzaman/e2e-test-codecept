@@ -12,3 +12,11 @@ Given(/I am loged in as "(.+)" with password "(.+)"/, async (email, password) =>
   I.seeInCurrentUrl('/cloud/home');
   I.see('Your content marketing performance');
 });
+
+Then(/Switch organization to "(.+)"/, async (organizationName) => {
+  I.click({ css: '.org-name-text' });
+  await Promise.all([
+    I.click(organizationName, '.dropdown-menu'),
+    I.waitForNavigation()
+  ]);
+});
