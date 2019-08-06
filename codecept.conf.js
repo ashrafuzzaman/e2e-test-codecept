@@ -2,8 +2,9 @@ exports.config = {
   output: 'reports',
   helpers: {
     Puppeteer: {
-      url: 'http://cmp-localdev.newscred.com:3000',
-      show: true,
+      browser: process.env.BROWSER || 'chrome',
+      url: process.env.BASE_URL || 'http://cmp-localdev.newscred.com:3000',
+      show: process.env.SHOW ? process.env.SHOW === "true" : true,
       waitForNavigation: ['networkidle2', 'domcontentloaded'],
       chrome: {
         ignoreHTTPSErrors: true
