@@ -1,0 +1,16 @@
+{
+  "name": "e2e-test-codecept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx codeceptjs run --steps"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "codeceptjs": "^2.2.1",
+    "puppeteer": "^1.19.0"
+  }
+}
