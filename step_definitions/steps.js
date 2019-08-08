@@ -14,9 +14,36 @@ Given(/I am loged in as "(.+)" with password "(.+)"/, async (email, password) =>
 });
 
 Then(/Switch organization to "(.+)"/, async (organizationName) => {
-  I.click({ css: '.org-name-text' });
-  await Promise.all([
-    I.click(organizationName, '.dropdown-menu'),
-    I.waitForNavigation()
-  ]);
+  let orgSwitcherSelector = { css: '.org-name-text' };
+  let selectedOrg = await I.grabTextFrom(orgSwitcherSelector);
+  if (selectedOrg !== organizationName) {
+    I.click(orgSwitcherSelector);
+    await Promise.all([
+      I.click(organizationName),
+      I.waitForNavigation()
+    ]);
+  }
 });
+
+Then(/Click on the New button on the header and click "(.+)"/, async (newItemText) => {
+  I.click('New', '.global-actions');
+  I.click(newItemText);
+});
+
+Then(/Click on "(.+)"/, async (text) => {
+  I.click(text);
+});
+
+Then(/Write "(.+)" into textbox with placeholder "(.+)"/, async (text, placeholder) => {
+  I.clearField(placeholder);
+  I.fillField(placeholder, text);
+});
+
+Then(/Select "(.+)" from dropdown below "(.+)"/, async (text, placeholder) => {
+  pause();
+  I.click(text);
+  // ndl-Select__control
+  I.clearField(placeholder);
+  I.fillField(placeholder, text);
+});
+

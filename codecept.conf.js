@@ -7,7 +7,12 @@ exports.config = {
       show: process.env.SHOW ? process.env.SHOW === "true" : true,
       waitForNavigation: ['networkidle2', 'domcontentloaded'],
       chrome: {
-        ignoreHTTPSErrors: true
+        defaultViewport: {
+          width: 1920,
+          height: 1080
+        },
+        ignoreHTTPSErrors: true,
+        args: ['--start-maximized']
       }
     }
   },
