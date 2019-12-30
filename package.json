@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx codeceptjs run --steps"
+    "test": "DEBUG=true npx codeceptjs run --steps --debug"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "codeceptjs": "^2.2.1",
-    "puppeteer": "^1.19.0"
+    "codeceptjs": "2.3.6",
+    "puppeteer": "2.0.0"
   }
 }
