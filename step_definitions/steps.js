@@ -10,11 +10,9 @@ Given(/I am loged in as "(.+)" with password "(.+)"/, async (email, password) =>
     I.waitForNavigation()
   ]);
   await I.seeInCurrentUrl('/cloud/home');
-  // await I.see('Your content marketing performance');
 });
 
 Then(/Switch organization to "(.+)"/, async (organizationName) => {
-  // pause();
   let orgSwitcherSelector = { css: '.org-name-text' };
   let selectedOrg = await I.grabTextFrom(orgSwitcherSelector);
   if (selectedOrg !== organizationName) {
@@ -40,19 +38,18 @@ Then(/Write "(.+)" into textbox with placeholder "(.+)"/, async (text, placehold
   await I.fillField(placeholder, text);
 });
 
-Then(/Select "(.+)" from dropdown below "(.+)"/, async (text, placeholder) => {
-  pause();
-  await I.click(text);
-  await I.clearField(placeholder);
-  await I.fillField(placeholder, text);
-});
-
 Then(/Select "(.+)" as Campaign Color/, async (color) => {
-  pause();
-  within('.ndl-ColorSelect-select', async () => {
-    I.fillField('input', color);
-    await I.click('.ndl-FormControl');
-    await I.click(color);
+  within('.ndl-ColorSelect', async () => {
+    await I.fillField('input', color);
+    await I.pressKey('Enter');
   });
 });
 
+Then(/Fill in richtext editor with "(.+)"/, async (text) => {
+  await I.click('.mce-edit-area iframe');
+  await I.appendField('.mce-edit-area iframe', 'appended');
+});
+
+Then(/open "(.+)"/, async (url) => {
+  await I.amOnPage(url);
+});
