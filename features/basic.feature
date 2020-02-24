@@ -4,7 +4,7 @@ Feature: Login to CMP
   #   Given I am loged in as "admin@newscred.com" with password "qwe90qwe"
 
   Scenario: Create Campaign
-    Given I am loged in as "admin@newscred.com" with password "qwe90qwe"
+    Given I am loged in as "**@newscred.com" with password "****"
     Then Switch organization to "Multi-Org Parent"
     # Then Click on the New button on the header and click "Campaign"
     # Then Write "Dev camp" into textbox with placeholder "Add a Campaign Name"
